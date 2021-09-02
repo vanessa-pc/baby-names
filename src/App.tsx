@@ -1,7 +1,8 @@
-import { greet } from "./utils/greet";
+import { NameList } from "./components/NameList";
+import names from './babyNamesData.json'
 
 function App(): JSX.Element {
-  return <h1>{greet("World")}</h1>;
+  return <NameList names={names} />
 }
 
 export default App;
