@@ -1,31 +1,31 @@
-*{
-    margin: 0
+* {
+  margin: 0;
 }
 
-.name-list{
-    display: flex;
-    flex-direction: column row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    margin-top: 150px ;
-    margin-left: 25%;
-    margin-right: 50%;
-    align-content: center;    
-    width: 500px;
-    height: auto;
-    border: solid violet 2px;
-    padding: 10px;
+.name-list {
+  display: flex;
+  flex-direction: column row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 150px;
+  margin-left: 25%;
+  margin-right: 50%;
+  align-content: center;
+  width: 500px;
+  height: auto;
+  border: solid violet 2px;
+  padding: 10px;
 }
 
-.female{
-    border: 1px solid teal;
-    padding: 0 5px;
-    margin: 1px 3px;
+.female {
+  border: 1px solid teal;
+  padding: 0 5px;
+  margin: 1px 3px;
 }
 
-.male{
-    border: 1px solid rgb(193, 206, 21);
-    padding: 0 5px;
-    margin: 1px 3px;
+.male {
+  border: 1px solid rgb(193, 206, 21);
+  padding: 0 5px;
+  margin: 1px 3px;
 }

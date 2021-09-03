@@ -1,5 +1,5 @@
-export interface BabyNames{
-    id: number;
-    name: string;
-    sex: string;
+export interface BabyNames {
+  id: number;
+  name: string;
+  sex: string;
 }
