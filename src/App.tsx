@@ -8,39 +8,47 @@ import { Favorites } from "./components/Favorites";
 import { sortNamesArray } from "./utils/sortNamesArray";
 
 function App(): JSX.Element {
-  const [searchName, setSearchName] = useState<string>("")
+  const [searchName, setSearchName] = useState<string>("");
 
-  const sortedNamesInit = sortNamesArray(names)
+  const sortedNamesInit = sortNamesArray(names);
 
-  const [sortedNames, setSortedNames] = useState<BabyNames[]>(sortedNamesInit)
-  const [favorites, setFavorites] = useState<BabyNames[]>([])
+  const [sortedNames, setSortedNames] = useState<BabyNames[]>(sortedNamesInit);
+  const [favorites, setFavorites] = useState<BabyNames[]>([]);
 
   const searchResults = searchString(names, searchName);
 
   const handleClickAdd = (name: BabyNames) => {
-    setSortedNames(sortedNames.filter(element => element.name !== name.name))
-    !favorites.includes(name) && setFavorites([...favorites, name])
-  }
+    setSortedNames(sortedNames.filter((element) => element.name !== name.name));
+    !favorites.includes(name) && setFavorites([...favorites, name]);
+  };
 
   const handleClickRemove = (name: BabyNames) => {
-    setFavorites(favorites.filter(element => element.name !== name.name))
-    setSortedNames(sortNamesArray([...sortedNames, name]))
-  }
-  
+    setFavorites(favorites.filter((element) => element.name !== name.name));
+    setSortedNames(sortNamesArray([...sortedNames, name]));
+  };
+
   return (
     <>
-    <div className="search-bar"> 
-    <SearchBox searchName={searchName} setSearchName={setSearchName}/>
-    </div>
-    {<div className="favorites">Favorite Names: <Favorites names={favorites} handleClickRemove={handleClickRemove}/>
-      </div> }
-    <div className="name-list">
-    {searchName === "" ? <NameList names={ sortedNames } handleClickAdd={handleClickAdd} />
-    : searchResults.length > 0 
-    ? <NameList names={searchResults} handleClickAdd={handleClickAdd}/> 
-    : <p> No name found! </p> }
-    </div>
-</>)
+      <div className="search-bar">
+        <SearchBox searchName={searchName} setSearchName={setSearchName} />
+      </div>
+      {
+        <div className="favorites">
+          Favorite Names:{" "}
+          <Favorites names={favorites} handleClickRemove={handleClickRemove} />
+        </div>
+      }
+      <div className="name-list">
+        {searchName === "" ? (
+          <NameList names={sortedNames} handleClickAdd={handleClickAdd} />
+        ) : searchResults.length > 0 ? (
+          <NameList names={searchResults} handleClickAdd={handleClickAdd} />
+        ) : (
+          <p> No name found! </p>
+        )}
+      </div>
+    </>
+  );
 }
 
 export default App;
