@@ -6,6 +6,7 @@ import { BabyNames } from "./components/Interface";
 import searchString from "./utils/searchString";
 import { Favorites } from "./components/Favorites";
 import { sortNamesArray } from "./utils/sortNamesArray";
+import RadioButton from "./components/RadioButton";
 
 function App(): JSX.Element {
   const [searchName, setSearchName] = useState<string>("");
@@ -27,8 +28,44 @@ function App(): JSX.Element {
     setSortedNames(sortNamesArray([...sortedNames, name]));
   };
 
+  const female = (name: BabyNames) => name.sex === "f";
+  const male = (name: BabyNames) => name.sex === "m";
+
+  const handleFemale = () => {
+    setSortedNames(sortedNamesInit.filter((element) => female(element)));
+  };
+  const handleMale = () => {
+    setSortedNames(sortedNamesInit.filter((element) => male(element)));
+  };
+
+  const handleAll = () => {
+    setSortedNames(sortedNamesInit);
+  };
+
   return (
     <>
+      <div className="radio-buttons">
+        <RadioButton
+          label="Female"
+          id="female-radio"
+          value="female"
+          handleChange={handleFemale}
+        />
+        <br />
+        <RadioButton
+          label="Male"
+          id="male-radio"
+          value="male"
+          handleChange={handleMale}
+        />
+        <br />
+        <RadioButton
+          label="All Names"
+          id="all-radio"
+          value="all"
+          handleChange={handleAll}
+        />
+      </div>
       <div className="search-bar">
         <SearchBox searchName={searchName} setSearchName={setSearchName} />
       </div>
